@@ -1,0 +1,45 @@
+<ion-view >
+	<ion-nav-title>
+	{{lang.getS('sLights')}}
+	</ion-nav-title>
+    <ion-content>
+	
+	 <ion-list>
+		 
+<!--
+			
+			<ion-item ng-repeat="light in houseLights"  ng-click="openLight({{light.id}})">
+					<span style="float:left;display:inline;">{{light.title}}</span>
+					<ion-toggle style="border:none;float:right;display:inline;" ng-model="light.enable" toggle-class="toggle-positive">
+					</ion-toggle>
+			</ion-item>
+			
+-->
+			<ion-toggle ng-repeat="light in houseLights"  ng-model="light.enable" toggle-class="toggle-positive">
+			
+			<button ng-click="openLight({{light.id}})" style="display:inline;" class="button button-small button-outline">
+				<i class="icon ion-plus"></i>
+			</button>
+			
+			<span style="display:inline;">&nbsp;{{light.title}}</span>
+			
+			<!--
+			<ion-item style="border:none;display:inline;width:100%;" ">
+					
+			</ion-item>
+			-->
+			
+		</ion-toggle>
+		
+
+
+	   </ion-list>
+    </ion-content>
+</ion-view>
+
+
+<!--
+
+
+
+-->

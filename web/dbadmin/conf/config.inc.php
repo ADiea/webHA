@@ -1,7 +1,7 @@
 <?php
 	//Heroku Database patch
-	//$dsn = getenv('DATABASE_URL');
-	$dsn = getenv('HEROKU_POSTGRESQL_IVORY_URL');
+	$dsn = getenv('DATABASE_URL');
+	//$dsn = getenv('HEROKU_POSTGRESQL_IVORY_URL');
 	//$regexp = '/(?P<driver>[a-z]*):\/\/(?P<username>[a-zA-Z0-9]*):(?P<password>[a-zA-Z0-9\-_]*)@(?P<host>[a-zA-Z0-9\-\.]*)\/(?P<database>[a-zA-Z0-9]*)/';
 	
 	//$matches = array();

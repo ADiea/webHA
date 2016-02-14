@@ -87,6 +87,8 @@ class Connection {
 			case '7.5': return 'Postgres80'; break;
 			case '7.4': return 'Postgres74'; break;
 			case '9.2': return 'Postgres92'; break;
+			case '9.4': return 'Postgres92'; break;
+			case '9.4.4': return 'Postgres92'; break;
 		}
 
 		/* All <7.4 versions are not supported */

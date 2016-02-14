@@ -2,8 +2,23 @@
 
 require('../vendor/autoload.php');
 
+include("phplib/adodb/adodb.inc.php");
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
+
+ $db = NewADOConnection('postgres7');
+ $db->Connect($dbopts["host"].':'.$dbopts["port"], 
+				$dbopts["user"], 
+				$dbopts["pass"], 
+				ltrim($dbopts["path"],'/'));
+ $result = $db->Execute("SELECT * FROM app");
+ if ($result === false) die("failed");  
+ while (!$result->EOF) {
+	for ($i=0, $max=$result->FieldCount(); $i < $max; $i++)
+		   print $result->fields[$i].' ';
+	$result->MoveNext();
+	print "<br>\n";
+ } 
 
 /*
   array(

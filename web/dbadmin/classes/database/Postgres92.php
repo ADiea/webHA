@@ -10,7 +10,7 @@ include_once('./classes/database/Postgres90.php');
 
 class Postgres92 extends Postgres90 {
 
-	var $major_version = 8.4;
+	var $major_version = 9.2;
 
 	// List of all legal privileges that can be applied to different types
 	// of objects.

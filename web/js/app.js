@@ -72,7 +72,7 @@ var ionicApp = angular.module('ionicApp', ['ionic', 'chart.js'])
       url: '/house/tests',
       views: {
         'menuContent': {
-          templateUrl: 'views/tests.html',
+          templateUrl: 'views/tests.php',
 		  controller: 'TestsCtrl'
         }
       }

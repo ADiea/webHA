@@ -356,7 +356,7 @@ $app->get('/db/', function() use($app) {
     <ion-nav-view></ion-nav-view>
 	
 	<?php
-echo $dbopts;
+print_r($dbopts);
 ?>
   </body>
 </html>

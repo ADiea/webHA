@@ -38,6 +38,20 @@
 			<i class="icon ion-arrow-right-a"></i>
 		</ion-item>	
 		
+			<?php
+	
+	 $result = $db->Execute("SELECT * FROM app");
+ if ($result === false) die("failed");  
+ while (!$result->EOF) {
+ print "<ion-item>";
+	for ($i=0, $max=$result->FieldCount(); $i < $max; $i++)
+		   print $result->fields[$i].' ';
+	$result->MoveNext();
+print "</ion-item>";
+ } 
+
+?>
+		
 <!--		
 		<label class="item item-input">
 		  <span class="input-label">Date</span>

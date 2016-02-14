@@ -11,14 +11,7 @@ $dbopts = parse_url(getenv('DATABASE_URL'));
 				$dbopts["user"], 
 				$dbopts["pass"], 
 				ltrim($dbopts["path"],'/'));
- $result = $db->Execute("SELECT * FROM app");
- if ($result === false) die("failed");  
- while (!$result->EOF) {
-	for ($i=0, $max=$result->FieldCount(); $i < $max; $i++)
-		   print $result->fields[$i].' ';
-	$result->MoveNext();
-	print "<br>\n";
- } 
+
 
 /*
   array(
@@ -369,9 +362,5 @@ $app->get('/db/', function() use($app) {
 
   <body ng-app="ionicApp">
     <ion-nav-view></ion-nav-view>
-	
-	<?php
-print_r($dbopts);
-?>
   </body>
 </html>

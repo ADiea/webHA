@@ -14,7 +14,7 @@ app.all('*', function(req, res, next) {
 });
 
  app.get('/', function(request, response) {
- response.render('index.html')
+ response.render('index')
  });
 
  app.get('/test', function(request, response) {

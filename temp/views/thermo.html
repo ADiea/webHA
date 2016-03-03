@@ -1,0 +1,259 @@
+<ion-view >
+	<ion-nav-title>
+	{{lang.getS('sHeating')}}
+	</ion-nav-title>
+
+  <ion-content>
+  	<ion-list>
+		<div ng-repeat="th in houseTH">
+		<ion-toggle class="item-divider" ng-model="th.autoPilotOn" toggle-class="toggle-positive">
+			<!-- class="tableDebug" -->
+			<table  style="width:100%" ng-click="uiToggleShowObj(th)" >
+				<tr>
+					<td  style="vertical-align:middle">
+						<button style="display:inline;margin-right:5px;" ng-click="uiToggleShowObj(th);$event.stopPropagation();" class="button button-positive button-small button-outline">
+							<i  class="icon" ng-class="uiOpenedObject==th ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+						</button>
+					</td>
+
+					<td>
+						<span class="h3" >
+							{{th.title}} 
+						</span>						
+					</td>
+
+					<td style="text-align:right;"> 
+						<div style="display:inline;padding-left:10px;" ng-class="{'text-disabled':(!th.autoPilotOn)}">
+							<span class="textDegIntSizeNormal">{{util.getTempInt(th.curTemp)}}</span>
+							<span class="textDegFloatSizeNormal">{{util.getTempFrac(th.curTemp)}}</span>
+							<span class="textDegSymbolSizeNormal textDegSymbolNormal">o</span>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td  style="vertical-align:middle">
+						<button style="display:inline;margin-right:5px;" 
+							ng-click="util.showDevErrorInfo(th);$event.stopPropagation();" 
+							class="button button-positive button-small button-clear"
+							ng-disabled="!th.isOffline" >
+							<i  class="icon" ng-class="th.isOffline ? 'ion-alert-circled':(th.isEditing || th.isOutdated || !_sock._Connected)?'ion-android-sync':'ion-checkmark-circled'"></i>
+						</button>
+					</td>
+				
+					<td style="vertical-align:bottom">
+						<p style="display:inline;">
+							<i class="icon ion-thermometer"></i>  
+								<span class="textDegIntSizeMicro">{{util.getTempInt(th.curSensorTemp1m)}}</span>
+								<span class="textDegFloatSizeMicro">{{util.getTempFrac(th.curSensorTemp1m)}}</span>
+								<span class="textDegSymbolSizeMicro textDegSymbolMicro">o</span>
+								<span class="textDegIntSizeMicro">C</span>
+
+							<i style="margin-left:5px" class="icon ion-waterdrop"></i>
+								<span class="textDegIntSizeMicro">{{util.getTempInt(th.curSensorHumid)}}</span>
+								<span class="textDegFloatSizeMicro">{{util.getTempFrac(th.curSensorHumid)}}</span>
+								<span class="textDegIntSizeMicro">%</span>
+						</p>
+					</td>
+
+					<td style="text-align:right;" >
+						<div  style="display:inline;margin-right:10px;">
+							<button ng-disabled="!util.canTempDown(th) || !th.autoPilotOn" 
+							ng-click="util.doTempDown(th);$event.stopPropagation();" 
+							on-hold="util.holdTempSetBtn(false, true, th)" 
+							on-release="util.holdTempSetBtn(false, false, th)" 
+							class="button button-small button-positive button-outline" > 
+								<i class="icon ion-minus"></i> 
+							</button>
+
+							<button ng-disabled="!util.canTempUp(th) || !th.autoPilotOn"   
+							ng-click="util.doTempUp(th);$event.stopPropagation();" 
+							on-hold="util.holdTempSetBtn(true, true, th)" 
+							on-release="util.holdTempSetBtn(true, false, th)" 
+							class="button button-small button-positive button-outline" >  
+								<i class="icon ion-plus"></i> 
+							</button>
+						</div>
+					</td>	
+				</tr>
+			</table>
+		</ion-toggle>
+
+		<ion-item ng-click="showAutopilotSettings(th)" class="item-accordion" ng-show="uiOpenedObject==th" >
+			<span style="display:inline;float:left">
+				<i ng-show="!settings.houseHoliday" class="icon icon-size-normal ion-ios-timer-outline"></i>
+				<i ng-show="settings.houseHoliday" class="icon icon-size-normal ion-briefcase"></i>
+				
+			<span style="margin-left:10px">{{lang.getS('sSched')}}</span>
+			</span>
+			
+			<div style="display:inline;float:right">
+			
+				<div style="display:inline;padding-left:10px;" ng-show="th.autoPilotOn" class="{{getAutopilotTempClass(th)}}">
+					<i class="icon icon-size-normal"></i>
+				
+					<span class="textDegIntSizeMicro">{{util.getTempInt(th.curTemp)}}</span>
+					<span class="textDegFloatSizeMicro">{{util.getTempFrac(th.curTemp)}}</span>
+					<span class="textDegSymbolSizeMicro textDegSymbolMicro">o</span>
+					<span class="textDegIntSizeMicro">C</span>
+				</div>			
+				<p style="display:inline;">{{getThermoAutoPilotDescr(th)}}</p>
+			</div>
+		</ion-item>
+		
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==th" ng-click="deviceChart(th)">
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-ios-speedometer-outline"></i>
+				<span style="margin-left:10px">{{lang.getS('sStatist')}}</span>
+			</span>
+
+			<div style="display:inline;float:right">
+				<p style="display:inline;">
+					1 min: 
+					<span class="textDegIntSizeMicro">{{util.getTempInt(th.curSensorTemp1m)}}</span>
+					<span class="textDegFloatSizeMicro">{{util.getTempFrac(th.curSensorTemp1m)}}</span>
+					<span class="textDegSymbolSizeMicro textDegSymbolMicro">o</span>
+					<span class="textDegIntSizeMicro">C</span>
+					 / 10 min:
+					<span class="textDegIntSizeMicro">{{util.getTempInt(th.curSensorTemp10m)}}</span>
+					<span class="textDegFloatSizeMicro">{{util.getTempFrac(th.curSensorTemp10m)}}</span>
+					<span class="textDegSymbolSizeMicro textDegSymbolMicro">o</span>
+					<span class="textDegIntSizeMicro">C</span> 				
+				</p>
+			</div>
+		</ion-item>
+		
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==th">
+
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-heart"></i>
+				<span style="margin-left:10px">{{lang.getS('sHealth')}}</span>
+			</span>
+			
+			<div style="display:inline;float:right">
+				<p style="display:inline;">{{getHealthyDescrRH(th)}}</p>
+
+			</div>
+
+		</ion-item>
+		
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==th" ng-click="showModalSettings(th, true)">
+			
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-android-settings"></i> 
+				<span style="margin-left:10px">{{lang.getS('sSetTitle')}}</span>
+			</span>
+			
+			<p style="display:inline;float:right">
+			</p>
+			
+		</ion-item>
+	</div>
+	
+	<div ng-repeat="heater in houseHeat">
+		<ion-item class="item-divider" >
+			
+			<table style="width:100%" ng-click="uiToggleShowObj(heater)" >
+				<tr>
+					<td style="vertical-align:middle">
+						<button style="display:inline;;margin-right:5px;" ng-click="uiToggleShowObj(heater);$event.stopPropagation();" class="button button-small button-positive button-outline">
+								<i  class="icon" ng-class="uiOpenedObject==heater ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+						</button>
+					</td>
+					
+					<td>
+						<span class="h3">
+							{{heater.title}}
+						</span>
+					</td>
+
+					<td style="text-align:right;"> 
+							<i ng-class="{'ion-ios-flame-outline':!heater.heaterOn, 'ion-ios-flame':heater.heaterOn, 'positive':heater.heaterOn}" 
+							class="icon icon-size-normal"></i><strong>{{heater.heaterOn?"PORNIT":"OPRIT"}}</strong>
+					</td>
+				</tr>
+
+				<tr>
+				
+					<td  style="vertical-align:middle">
+						<button style="display:inline;margin-right:5px;" 
+							ng-click="util.showDevErrorInfo(heater);$event.stopPropagation();" 
+							class="button button-positive button-small button-clear"
+							ng-disabled="!heater.isOffline" >
+							<i  class="icon" ng-class="heater.isOffline ? 'ion-alert-circled':(heater.isEditing||heater.isOutdated || !_sock._Connected)?'ion-android-sync':'ion-checkmark-circled'"></i>
+						</button>
+					</td>
+				
+		
+					<td style="vertical-align:bottom">
+						<p  >	
+							<i ng-class="{'assertive':heater.heaterFault}" class="icon ion-android-warning"></i>  
+							<strong>{{heater.heaterFault?heater.heaterFaultDescr:"Normal"}}</strong> 
+							<i style="margin-right:10px" class="icon ion-flame"></i>
+							<strong>{{minutesToText(heater.heaterOnMinutes)}}</strong>
+						</p>
+					</td>
+
+				</tr>
+
+			</table>
+
+		</ion-item>
+
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==heater" ng-click="deviceChart(heater)">
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-ios-speedometer-outline"></i>
+				<span style="margin-left:10px">Istoric</span>
+			</span>
+
+			
+			<div style="display:inline;float:right">
+				<p style="display:inline;">{{minutesToText(heater.heaterOnMinutes)}}</p>
+				<button class="button button-small button-outline" ng-click="">
+					<i  class="icon ion-more"></i>
+				</button>
+			</div>
+		</ion-item>
+		
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==heater" ng-click="">
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-android-warning"></i>
+				<span style="margin-left:10px">Gaz</span>
+			</span>
+
+			
+			<div style="display:inline;float:right">
+				<p style="display:inline;">{{heater.lastGasReading + " (" + heater.lowGasLevThres + "/" + heater.medGasLevThres + "/" + heater.highGasLevThres + ")" }}</p>
+				<button class="button button-small button-outline">
+					<i  class="icon ion-more"></i>
+				</button>
+			</div>
+		</ion-item>		
+
+		<ion-item class="item-accordion" ng-show="uiOpenedObject==heater" ng-click="showModalSettings(heater, false)">
+			<span style="display:inline;float:left"> 
+				<i class="icon icon-size-normal ion-android-settings"></i> 
+				<span style="margin-left:10px">{{lang.getS('sSetTitle')}}</span>
+			</span>
+			
+			<p style="display:inline;float:right">
+			</p>			
+		</ion-item>
+
+	</div>
+
+	</ion-list>
+  
+	
+	</ion-content>
+	<ion-footer-bar>
+
+	 <div class="button-bar" >
+		<button ng-click="defaultDemoDevices()"
+			class="button button-small button-outline button-assertive">
+			<i class="icon  ion-ios-reload"></i>
+		</button>
+	 </div>
+	 
+  </ion-footer-bar>
+</ion-view>

@@ -4,7 +4,7 @@ var express = require("express")
 var app = express()
 var port = process.env.PORT || 5000
 
-app.use(express.static(__dirname + '/www'));
+app.use(express.static(__dirname + '/temp'));
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {

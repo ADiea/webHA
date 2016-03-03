@@ -1,0 +1,82 @@
+<ion-modal-view class="modalAutoPilot">
+  <ion-header-bar>
+    <h1 class="title">/Graph</h1>
+  </ion-header-bar>
+ 
+  <ion-content>
+  
+
+<table class="tableFull alignCenter">
+<tr>
+<td colspan="3">
+  	 <div class="button-bar" >
+ 
+ <!-- ng-model="gr.checked" -->
+	<div ng-repeat="gr in modalChart.chartDev.chartSeries">
+		<button ng-click="gr.checked = !gr.checked;modalChart.processDevChart(modalChart.chartDev, gr.name)" 
+			class="button button-clear" 
+			style="text-decoration:{{gr.checked?'underline':'none'}};font-weight:bold;color:{{modalChart.chartDev.chartColours[$index].strokeColor}}">{{gr.name}}</button>
+	</div>
+	</div>
+</td>	
+</tr>
+<tr>
+	 
+	 <td style="vertical-align:middle;text-align:center;" >
+	 	<p>{{util.formatTime(modalChart.chartDev.chartStartDate - modalChart.chartDev.chartDecimation * 60 * 20)}}</p>
+		<button class="button button-small button-outline button-assertive" 
+			ng-click="setDeviceLogStartTime(modalChart.chartDev, util.addMinutes(modalChart.chartDev.chartStartDate,  -modalChart.chartDev.chartDecimation * 10));">
+			<i  class="icon ion-ios-arrow-left"></i>			
+		</button>
+		<p>{{util.formatDate(modalChart.chartDev.chartStartDate)}}</p>
+	 </td>
+	<td>
+            <canvas class="chart chart-line" 
+					chart-data="modalChart.chartDev.chartActiveData" 
+					chart-labels="modalChart.chartDev.chartLabels" 
+					chart-legend="false" 
+					chart-series="modalChart.chartDev.chartActiveSeries" 
+					chart-colours="modalChart.chartDev.chartActiveColours" 
+					chart-options="{responsive: true, animation: false, bezierCurve:true, showTooltips: false}">
+			</canvas>
+	</td>		
+	<td style="vertical-align:middle;text-align:center;" >
+	 	<p>{{util.formatTime(modalChart.chartDev.chartStartDate)}}</p>
+		<button ng-click="setDeviceLogStartTime(modalChart.chartDev, util.addMinutes(modalChart.chartDev.chartStartDate,  modalChart.chartDev.chartDecimation * 10));"
+			class="button button-small button-outline button-assertive">
+			<i  class="icon ion-ios-arrow-right"></i>			
+		</button>
+		<p>{{util.formatDate(modalChart.chartDev.chartStartDate)}}</p>
+	 </td>
+</tr>	 
+</table>
+
+	</ion-content>
+  	<ion-footer-bar>
+
+	 <div class="button-bar" >
+		<button ng-click="setDeviceLogDecimation(modalChart.chartDev, 1)"
+			class="button button-small button-outline button-assertive">
+			20m
+		</button>
+		<button ng-click="setDeviceLogDecimation(modalChart.chartDev, 9)"
+			class="button button-small button-outline button-assertive">
+			3h
+		</button>
+		<button ng-click="setDeviceLogDecimation(modalChart.chartDev, 18)"
+			class="button button-small button-outline button-assertive">
+			6h
+		</button>
+		<button ng-click="setDeviceLogDecimation(modalChart.chartDev, 36)"
+			class="button button-small button-outline button-assertive">
+			12h
+		</button>
+		<button ng-click="setDeviceLogDecimation(modalChart.chartDev, 72)"
+			class="button button-small button-outline button-assertive">
+			24h
+		</button>
+	 </div>
+	 
+
+  	</ion-footer-bar>
+</ion-modal-view>

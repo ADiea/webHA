@@ -1,2 +1,2 @@
-vendor/
-.env
+*.swp
+node_modules

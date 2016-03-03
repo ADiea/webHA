@@ -13,10 +13,6 @@ app.all('*', function(req, res, next) {
     next();
 });
 
- app.get('/', function(request, response) {
- response.render('index')
- });
-
  app.get('/test', function(request, response) {
  response.send('Hello World!');
  });

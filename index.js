@@ -4,7 +4,7 @@ var express = require("express")
 var app = express()
 var port = process.env.PORT || 5000
 
-app.use(express.static('www'));
+app.use(express.static(__dirname + '/www'));
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
@@ -13,8 +13,9 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-// API Routes
-// app.get('/blah', routeHandler);
+ app.get('/test', function(request, response) {
+ response.send('Hello World!');
+ });
 
 var server = http.createServer(app)
 server.listen(port)

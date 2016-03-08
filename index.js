@@ -88,14 +88,23 @@ wss.on("connection", function(ws)
   {
     console.log("ws msg "+msg)
     
-	var m = JSON.???(msg);
+	var m = JSON.parse(msg);
+	var reply = {};
+	
+	if(typeof m.op === 'undefined')
+	{
+		console.log("[E] ws msg: nop")
+		return;
+	}
 	
 	switch(m.op)
 	{
 		case WsProtocol.wsOP_cliHello:
 			if(gCon[conIdx].state == WsProtocol.wsState_new)
 			{
-				ws.send("{conID:"+id+"}", function() {  })
+				reply.op = WsProtocol.wsOP_servHello;
+				reply.conID = id;
+				ws.send(JSON.stringify(reply), function() {  })
 			
 				gCon[conIdx].state = WsProtocol.wsState_hello;
 			}
@@ -115,6 +124,10 @@ wss.on("connection", function(ws)
 		
 		case WsProtocol.wsOP_msgToUser:
 		break;
+		
+		default:
+			console.log("[E] ws msg: unknown op")
+			break;
 	};
 	
   });

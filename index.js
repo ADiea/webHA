@@ -36,8 +36,14 @@ var WsProtocol =
 	wsOP_cliHello:0,
 	wsOP_servHello:1,
 	wsOP_cliLogin:2,
-	wsOP_msgToBase:3,
-	wsOP_msgToUser:4,
+	wsOP_msgRelay:3,
+	wsOP_msgSpecial:4,
+	wsOP_positiveAck:5,
+	wsOP_negativeAck:6,
+	
+	//subopCodes
+	wsOP_srvDebugConn:0,
+	
 	
 	//message keys
 	wsKey_clientType:0,
@@ -46,6 +52,7 @@ var WsProtocol =
 	wsValue_homeBase:0,
 	wsValue_webBrowser:1,
 	wsValue_mobileApp:2,
+	wsValue_unknown:3,
 	
 	//connection states
 	wsState_new:0,
@@ -53,28 +60,15 @@ var WsProtocol =
 	wsState_conn:2,
 	wsState_inval:3,
 	
+	
 };
-
-function getConIdx(id)
-{
-	var i;
-	for(i=0; i< gCon.length; i++)
-	{
-		if(id == gCon[i].id)
-		{
-			return i;
-		}
-	}
-	return -1;
-}
-
 
 wss.on("connection", function(ws) 
 {
   var id = curID++;
   var conIdx = gCon.length;
   
-  gCon.push({id:id, ws:ws, state:WsProtocol.wsState_new});
+  gCon.push({ws:ws, id:-1, ws:ws, state:WsProtocol.wsState_new, type:WsProtocol.wsValue_unknown});
   
   /*setInterval(function() {
     ws.send(JSON.stringify(new Date()), function() {  })
@@ -103,30 +97,96 @@ wss.on("connection", function(ws)
 			if(gCon[conIdx].state == WsProtocol.wsState_new)
 			{
 				reply.op = WsProtocol.wsOP_servHello;
-				reply.conID = id;
 				ws.send(JSON.stringify(reply), function() {  })
-			
+
 				gCon[conIdx].state = WsProtocol.wsState_hello;
 			}
 			else console.log("[E] ws msg: cliHello, state "+gCon[conIdx].state);
 		break;
 		
 		case WsProtocol.wsOP_cliLogin:
-			if(gCon[conIdx].state == WsProtocol.wsState_new)
+			if(gCon[conIdx].state == WsProtocol.wsState_hello)
 			{
-				gCon[conIdx].state = WsProtocol.wsState_hello;
+				if((m.type >= WsProtocol.wsValue_homeBase && m.type <= WsProtocol.wsValue_unknown) &&
+					(m.id > -1))
+				{
+					gCon[conIdx].type = m.type;
+					gCon[conIdx].id = m.id;
+					
+					reply.op = WsProtocol.wsOP_positiveAck;
+					reply.conID = id;
+					gCon[conIdx].state = WsProtocol.wsState_conn;
+				}
+				else
+				{
+					reply.op = WsProtocol.wsOP_negativeAck;
+					reply.err = "badParams";
+					
+				}
+				
+				ws.send(JSON.stringify(reply), function() {  })
 			}
 			else console.log("[E] ws msg: cliLogin, state "+gCon[conIdx].state);		
 		break;
 		
-		case WsProtocol.wsOP_msgToBase:
+		case WsProtocol.wsOP_msgRelay:
+			if(gCon[conIdx].state == WsProtocol.wsState_conn)
+			{
+				var dest = m.dest;
+				var destType = m.type;
+				var i=0;
+				reply.op = WsProtocol.wsOP_negativeAck;
+				
+				for(; i< conIdx+1;i++)
+				{
+					if(gCon[i].type == destType && gCon[i].id == dest)
+					{
+						var proxy={}
+						proxy.op = WsProtocol.wsOP_msgRelay;
+						proxy.msg = m.msg;
+						proxy.from = gCon[conIdx].id;
+						
+						gCon[i].ws.send(JSON.stringify(proxy), function() {  })
+						reply.op = WsProtocol.wsOP_positiveAck;
+						break;
+					}
+				}
+				
+				//only send reply for negative responses
+				if(reply.op == WsProtocol.wsOP_negativeAck)
+				{
+					ws.send(JSON.stringify(reply), function() {  })
+				}
+			}
+			else console.log("[E] ws msg: msgToBase, state "+gCon[conIdx].state);		
 		break;
 		
-		case WsProtocol.wsOP_msgToUser:
+		case WsProtocol.wsOP_msgSpecial:
+			if(gCon[conIdx].state == WsProtocol.wsState_conn)
+			{
+				switch(m.subOp)
+				{
+					case WsProtocol.wsOP_srvDebugConn:
+					
+						reply.op = WsProtocol.wsOP_msgSpecial;
+						reply.subOp = WsProtocol.wsOP_srvDebugConn;
+						
+						reply.message = gCon;
+						
+						ws.send(JSON.stringify(reply), function() {  })
+	
+					break;
+					
+					default:
+						console.log("[E] ws msg: unknown op" + m.op)
+					break;
+				}
+			}
+			else console.log("[E] ws msg: msgToServer, state "+gCon[conIdx].state);
 		break;
 		
 		default:
-			console.log("[E] ws msg: unknown op")
+			console.log("[E] ws msg: unknown op" + m.op)
 			break;
 	};
 	

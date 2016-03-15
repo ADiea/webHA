@@ -107,7 +107,7 @@ wss.on("connection", function(ws)
 		case WsProtocol.wsOP_cliLogin:
 			if(gCon[conIdx].state == WsProtocol.wsState_hello)
 			{
-				if((m.type >= WsProtocol.wsValue_homeBase && m.type <= WsProtocol.wsValue_unknown) &&
+				if((m.type >= WsProtocol.wsValue_homeBase && m.type < WsProtocol.wsValue_unknown) &&
 					(m.id > -1))
 				{
 					gCon[conIdx].type = m.type;

@@ -26,7 +26,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 //connections
-var gCon = {};
+var gCon = [];
 
 var curID = 0;
 

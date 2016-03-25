@@ -1,0 +1,178 @@
+Welcome to Git (version 1.7.9-preview20120201)
+
+
+Run 'git help git' to display the help index.
+Run 'git help <command>' to display help for specific commands.
+
+Andrei@NAME-1510F99934 /D/mystuff/prj/home auto/esp/soft/webHA (master)
+$ heroku logs --app homea --tail
+2016-03-25T05:22:45.552232+00:00 heroku[router]: at=info method=GET path="/js/services/settings.js" host=homea.herokuapp.com request_id=b7d06444-023a-4d66-b81d-7c01c8b60a0c fwd="93.114.164.145" dyno=w
+eb.1 connect=1ms service=1ms status=200 bytes=2446
+2016-03-25T05:22:45.643495+00:00 heroku[router]: at=info method=GET path="/js/services/logData.js" host=homea.herokuapp.com request_id=b596a263-8dc0-429c-9ed2-ffab530a56f8 fwd="93.114.164.145" dyno=we
+b.1 connect=0ms service=1ms status=200 bytes=759
+2016-03-25T05:22:45.701574+00:00 heroku[router]: at=info method=GET path="/js/controllers/LightController.js" host=homea.herokuapp.com request_id=d4ad20d8-61a6-4a93-854d-63a4fefeb79f fwd="93.114.164.1
+45" dyno=web.1 connect=0ms service=2ms status=200 bytes=5432
+2016-03-25T05:22:45.689460+00:00 heroku[router]: at=info method=GET path="/js/controllers/AppController.js" host=homea.herokuapp.com request_id=a9cf10e5-e87e-48dc-a5db-4d4540e977c9 fwd="93.114.164.145
+" dyno=web.1 connect=0ms service=1ms status=200 bytes=729
+2016-03-25T05:22:45.725331+00:00 heroku[router]: at=info method=GET path="/js/controllers/ThermoController.js" host=homea.herokuapp.com request_id=fd56bdb7-13f9-4591-91d3-2fbf1d9bd930 fwd="93.114.164.
+145" dyno=web.1 connect=1ms service=4ms status=200 bytes=33263
+2016-03-25T05:22:45.613692+00:00 heroku[router]: at=info method=GET path="/js/services/commWeb.js" host=homea.herokuapp.com request_id=939cc0da-ad6b-4792-ad43-cc49d3d0e6e4 fwd="93.114.164.145" dyno=we
+b.1 connect=0ms service=1ms status=200 bytes=2609
+2016-03-25T05:22:45.674739+00:00 heroku[router]: at=info method=GET path="/js/services/util.js" host=homea.herokuapp.com request_id=b8ce1649-8554-41ca-a3e1-cd002902daaf fwd="93.114.164.145" dyno=web.1
+ connect=0ms service=2ms status=200 bytes=4192
+2016-03-25T05:22:45.634008+00:00 heroku[router]: at=info method=GET path="/js/services/socket.js" host=homea.herokuapp.com request_id=f4e1416e-05a1-45c5-84a2-da2a2e0a67da fwd="93.114.164.145" dyno=web
+.1 connect=0ms service=1ms status=200 bytes=5149
+2016-03-25T05:22:45.804947+00:00 heroku[router]: at=info method=GET path="/js/controllers/HolidayController.js" host=homea.herokuapp.com request_id=d3b228ad-4908-4ebd-af5f-43ca64e33cd1 fwd="93.114.164
+.145" dyno=web.1 connect=0ms service=2ms status=200 bytes=6822
+2016-03-25T05:22:45.735156+00:00 heroku[router]: at=info method=GET path="/js/controllers/SettingsController.js" host=homea.herokuapp.com request_id=85027904-fa6f-411c-a3cb-6854fb88cdd5 fwd="93.114.16
+4.145" dyno=web.1 connect=0ms service=1ms status=200 bytes=3377
+2016-03-25T05:22:45.763704+00:00 heroku[router]: at=info method=GET path="/js/controllers/TestController.js" host=homea.herokuapp.com request_id=cff89c17-15f7-4c65-901a-62d388823f13 fwd="93.114.164.14
+5" dyno=web.1 connect=0ms service=1ms status=200 bytes=2594
+2016-03-25T05:22:45.795873+00:00 heroku[router]: at=info method=GET path="/js/controllers/LogController.js" host=homea.herokuapp.com request_id=8db31333-af67-4162-9b2e-12147919fc55 fwd="93.114.164.145
+" dyno=web.1 connect=0ms service=2ms status=200 bytes=1487
+2016-03-25T05:22:45.748854+00:00 heroku[router]: at=info method=GET path="/js/controllers/FMController.js" host=homea.herokuapp.com request_id=837556d3-126d-4891-bd30-aa10ab920db1 fwd="93.114.164.145"
+ dyno=web.1 connect=0ms service=2ms status=200 bytes=449
+2016-03-25T05:22:45.822352+00:00 heroku[router]: at=info method=GET path="/js/directives.js" host=homea.herokuapp.com request_id=414bfb66-7963-4d0d-b7ce-1f1a775848e3 fwd="93.114.164.145" dyno=web.1 co
+nnect=0ms service=1ms status=200 bytes=7690
+2016-03-25T05:22:52.389335+00:00 heroku[router]: at=info method=GET path="/cordova.js" host=homea.herokuapp.com request_id=17af1287-fdd0-47ab-923e-b6a40a830ec6 fwd="93.114.164.145" dyno=web.1 connect=
+0ms service=2ms status=404 bytes=301
+2016-03-25T05:22:52.784854+00:00 heroku[router]: at=info method=GET path="/views/house.html" host=homea.herokuapp.com request_id=1ed85177-0c52-4994-8090-bca2c427e8ce fwd="93.114.164.145" dyno=web.1 co
+nnect=0ms service=2ms status=200 bytes=1561
+2016-03-25T05:22:52.757973+00:00 heroku[router]: at=info method=GET path="/views/editHoliday.html" host=homea.herokuapp.com request_id=32719f6f-3e8d-45f8-9d5d-7d7c15a9cc33 fwd="93.114.164.145" dyno=we
+b.1 connect=0ms service=1ms status=200 bytes=3332
+2016-03-25T05:22:52.768836+00:00 heroku[router]: at=info method=GET path="/views/fmradio.html" host=homea.herokuapp.com request_id=ef6e129e-c72b-4fa5-9143-1c971588ce50 fwd="93.114.164.145" dyno=web.1
+connect=0ms service=1ms status=200 bytes=557
+2016-03-25T05:22:52.823815+00:00 heroku[router]: at=info method=GET path="/views/menu.html" host=homea.herokuapp.com request_id=c8c1dab8-9539-4698-9177-06390a25e07e fwd="93.114.164.145" dyno=web.1 con
+nect=0ms service=1ms status=200 bytes=2199
+2016-03-25T05:22:52.839115+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=homea.herokuapp.com request_id=f93a856b-c273-4709-a503-3b390ddf559d fwd="93.114.164.145" dyno=web.1 connect
+=0ms service=1ms status=404 bytes=302
+2016-03-25T05:22:52.821798+00:00 heroku[router]: at=info method=GET path="/views/thermo.html" host=homea.herokuapp.com request_id=d8e50525-d65f-4fa7-a3a8-da252ac3c67b fwd="93.114.164.145" dyno=web.1 c
+onnect=0ms service=1ms status=200 bytes=9990
+2016-03-25T05:22:52.827551+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=homea.herokuapp.com request_id=739af276-738b-4694-8933-e0e8af6b7ad5 fwd="93.114.164.145" dyno=web.1 connect
+=0ms service=1ms status=404 bytes=302
+2016-03-25T05:22:53.461452+00:00 heroku[router]: at=info method=GET path="/lib/ionic/fonts/ionicons.ttf?v=2.0.1" host=homea.herokuapp.com request_id=1aa2d330-ec14-44f1-b4a7-963907633824 fwd="93.114.16
+4.145" dyno=web.1 connect=0ms service=8ms status=200 bytes=188799
+2016-03-25T05:22:53.598647+00:00 heroku[router]: at=info method=GET path="/views/lights.html" host=homea.herokuapp.com request_id=fbc1526f-6cff-4f0e-996f-16d717b6b74e fwd="93.114.164.145" dyno=web.1 c
+onnect=1ms service=1ms status=200 bytes=1246
+2016-03-25T05:22:53.637453+00:00 heroku[router]: at=info method=GET path="/views/settings.html" host=homea.herokuapp.com request_id=23a6e3a3-2ae6-41f0-aed1-31171c7259c3 fwd="93.114.164.145" dyno=web.1
+ connect=0ms service=1ms status=200 bytes=2525
+2016-03-25T05:22:53.631676+00:00 heroku[router]: at=info method=GET path="/views/log.html" host=homea.herokuapp.com request_id=7352a536-7aeb-4476-b80e-16e658027b12 fwd="93.114.164.145" dyno=web.1 conn
+ect=0ms service=2ms status=200 bytes=826
+2016-03-25T05:22:53.656500+00:00 heroku[router]: at=info method=GET path="/views/tests.html" host=homea.herokuapp.com request_id=32225d25-583c-4ca8-bb2d-8015d1c81326 fwd="93.114.164.145" dyno=web.1 co
+nnect=0ms service=1ms status=200 bytes=1691
+2016-03-25T05:27:35.149262+00:00 heroku[router]: at=info method=GET path="/" host=homea.herokuapp.com request_id=744548bc-7ede-4125-8d39-c66f1e5ec071 fwd="93.114.164.145" dyno=web.1 connect=1ms servic
+e=9ms status=101 bytes=129
+2016-03-25T05:27:35.142401+00:00 app[web.1]:
+2016-03-25T05:27:35.142476+00:00 app[web.1]: /app/index.js:71
+2016-03-25T05:27:35.142736+00:00 app[web.1]:   gCon.push({ws:ws, id:-1, ws:ws, state:WsProtocol.wsState_new, type:WsProtoco
+2016-03-25T05:27:35.142739+00:00 app[web.1]:        ^
+2016-03-25T05:27:35.145229+00:00 app[web.1]: TypeError: Object #<Object> has no method 'push'
+2016-03-25T05:27:35.145238+00:00 app[web.1]:     at WebSocketServer.<anonymous> (/app/index.js:71:8)
+2016-03-25T05:27:35.145239+00:00 app[web.1]:     at WebSocketServer.emit (events.js:95:17)
+2016-03-25T05:27:35.145240+00:00 app[web.1]:     at /app/node_modules/ws/lib/WebSocketServer.js:74:14
+2016-03-25T05:27:35.145240+00:00 app[web.1]:     at completeHybiUpgrade2 (/app/node_modules/ws/lib/WebSocketServer.js:237:5)
+2016-03-25T05:27:35.145244+00:00 app[web.1]:     at Server.emit (events.js:106:17)
+2016-03-25T05:27:35.145241+00:00 app[web.1]:     at completeHybiUpgrade1 (/app/node_modules/ws/lib/WebSocketServer.js:262:13)
+2016-03-25T05:27:35.145242+00:00 app[web.1]:     at WebSocketServer.handleHybiUpgrade (/app/node_modules/ws/lib/WebSocketServer.js:290:3)
+2016-03-25T05:27:35.145243+00:00 app[web.1]:     at WebSocketServer.handleUpgrade (/app/node_modules/ws/lib/WebSocketServer.js:147:26)
+2016-03-25T05:27:35.157219+00:00 app[web.1]: npm ERR! not with npm itself.
+2016-03-25T05:27:35.145243+00:00 app[web.1]:     at Server.<anonymous> (/app/node_modules/ws/lib/WebSocketServer.js:72:12)
+2016-03-25T05:27:35.157561+00:00 app[web.1]: npm ERR! Tell the author that this fails on your system:
+2016-03-25T05:27:35.157780+00:00 app[web.1]: npm ERR!     node index.js
+2016-03-25T05:27:35.149504+00:00 app[web.1]:
+2016-03-25T05:27:35.158001+00:00 app[web.1]: npm ERR!     npm owner ls webHA
+2016-03-25T05:27:35.153855+00:00 app[web.1]: npm ERR! webHA@0.0.1 start: `node index.js`
+2016-03-25T05:27:35.158079+00:00 app[web.1]: npm ERR! There is likely additional logging output above.
+2016-03-25T05:27:35.155826+00:00 app[web.1]: npm ERR! Exit status 8
+2016-03-25T05:27:35.158221+00:00 app[web.1]: npm ERR! System Linux 3.13.0-79-generic
+2016-03-25T05:27:35.156920+00:00 app[web.1]: npm ERR!
+2016-03-25T05:27:35.158328+00:00 app[web.1]: npm ERR! command "/app/.heroku/node/bin/node" "/app/.heroku/node/bin/npm" "start"
+2016-03-25T05:27:35.157031+00:00 app[web.1]: npm ERR! Failed at the webHA@0.0.1 start script.
+2016-03-25T05:27:35.158439+00:00 app[web.1]: npm ERR! cwd /app
+2016-03-25T05:27:35.157114+00:00 app[web.1]: npm ERR! This is most likely a problem with the webHA package,
+2016-03-25T05:27:35.158585+00:00 app[web.1]: npm ERR! node -v v0.10.43
+2016-03-25T05:27:35.158691+00:00 app[web.1]: npm ERR! npm -v 1.4.29
+2016-03-25T05:27:35.158795+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2016-03-25T05:27:35.145245+00:00 app[web.1]:     at Socket.socket.ondata (http.js:2042:14)
+2016-03-25T05:27:35.157895+00:00 app[web.1]: npm ERR! You can get their info via:
+2016-03-25T05:27:35.160327+00:00 app[web.1]: npm ERR! Additional logging details can be found in:
+2016-03-25T05:27:35.160230+00:00 app[web.1]: npm ERR!
+2016-03-25T05:27:35.160400+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2016-03-25T05:27:35.160573+00:00 app[web.1]: npm ERR! not ok code 0
+2016-03-25T05:27:35.735796+00:00 heroku[web.1]: Process exited with status 1
+2016-03-25T05:27:35.750624+00:00 heroku[web.1]: State changed from up to crashed
+2016-03-25T05:27:35.751568+00:00 heroku[web.1]: State changed from crashed to starting
+2016-03-25T05:27:42.239806+00:00 heroku[web.1]: Starting process with command `npm start`
+2016-03-25T05:27:43.808255+00:00 app[web.1]: npm WARN deprecated This version of npm lacks support for important features,
+2016-03-25T05:27:43.808446+00:00 app[web.1]: npm WARN deprecated such as scoped packages, offered by the primary npm
+2016-03-25T05:27:43.808753+00:00 app[web.1]: npm WARN deprecated registry. Consider upgrading to at least npm@2, if not the
+2016-03-25T05:27:43.808876+00:00 app[web.1]: npm WARN deprecated latest stable version. To upgrade to npm@2, run:
+2016-03-25T05:27:43.808980+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T05:27:43.809087+00:00 app[web.1]: npm WARN deprecated   npm -g install npm@latest-2
+2016-03-25T05:27:43.809176+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T05:27:43.809285+00:00 app[web.1]: npm WARN deprecated To upgrade to the latest stable version, run:
+2016-03-25T05:27:43.809478+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T05:27:43.809597+00:00 app[web.1]: npm WARN deprecated   npm -g install npm@latest
+2016-03-25T05:27:43.810681+00:00 app[web.1]: npm WARN deprecated Node.js 0.10 LTS, be aware that the next version of 0.10 LTS
+2016-03-25T05:27:43.810861+00:00 app[web.1]: npm WARN deprecated will be bundled with a version of npm@2, which has some small
+2016-03-25T05:27:43.811030+00:00 app[web.1]: npm WARN deprecated backwards-incompatible changes made to `npm run-script` and
+2016-03-25T05:27:43.811325+00:00 app[web.1]: npm WARN deprecated semver behavior.
+2016-03-25T05:27:43.809726+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T05:27:43.862793+00:00 app[web.1]:
+2016-03-25T05:27:43.809817+00:00 app[web.1]: npm WARN deprecated (Depending on how Node.js was installed on your system, you
+2016-03-25T05:27:43.862812+00:00 app[web.1]: > webHA@0.0.1 start /app
+2016-03-25T05:27:43.809997+00:00 app[web.1]: npm WARN deprecated may need to prefix the preceding commands with `sudo`, or if
+2016-03-25T05:27:43.862813+00:00 app[web.1]: > node index.js
+2016-03-25T05:27:43.810167+00:00 app[web.1]: npm WARN deprecated on Windows, run them from an Administrator prompt.)
+2016-03-25T05:27:43.862813+00:00 app[web.1]:
+2016-03-25T05:27:43.810323+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T05:27:44.038990+00:00 app[web.1]: http server listening on 15051
+2016-03-25T05:27:43.810507+00:00 app[web.1]: npm WARN deprecated If you're running the version of npm bundled with
+2016-03-25T05:27:44.040048+00:00 app[web.1]: websocket server created
+2016-03-25T05:27:44.401241+00:00 heroku[web.1]: State changed from starting to up
+2016-03-25T06:02:59.932979+00:00 heroku[web.1]: State changed from up to down
+2016-03-25T06:02:59.932359+00:00 heroku[web.1]: Idling
+2016-03-25T06:03:03.587802+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2016-03-25T06:03:04.620594+00:00 app[web.1]: Error waiting for process to terminate: No child processes
+2016-03-25T06:03:05.368140+00:00 heroku[web.1]: Process exited with status 22
+2016-03-25T07:00:30.427439+00:00 heroku[api]: Deploy f9888c1 by diea_andrei@yahoo.com
+2016-03-25T07:00:30.427466+00:00 heroku[api]: Release v28 created by diea_andrei@yahoo.com
+2016-03-25T07:00:30.577328+00:00 heroku[slug-compiler]: Slug compilation started
+2016-03-25T07:00:30.577333+00:00 heroku[slug-compiler]: Slug compilation finished
+2016-03-25T07:04:21.761378+00:00 heroku[web.1]: Unidling
+2016-03-25T07:04:21.762057+00:00 heroku[web.1]: State changed from down to starting
+2016-03-25T07:04:23.852308+00:00 heroku[web.1]: Starting process with command `npm start`
+2016-03-25T07:04:25.749379+00:00 app[web.1]: npm WARN deprecated This version of npm lacks support for important features,
+2016-03-25T07:04:25.749573+00:00 app[web.1]: npm WARN deprecated such as scoped packages, offered by the primary npm
+2016-03-25T07:04:25.749876+00:00 app[web.1]: npm WARN deprecated registry. Consider upgrading to at least npm@2, if not the
+2016-03-25T07:04:25.750003+00:00 app[web.1]: npm WARN deprecated latest stable version. To upgrade to npm@2, run:
+2016-03-25T07:04:25.750105+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T07:04:25.750221+00:00 app[web.1]: npm WARN deprecated   npm -g install npm@latest-2
+2016-03-25T07:04:25.750331+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T07:04:25.750425+00:00 app[web.1]: npm WARN deprecated To upgrade to the latest stable version, run:
+2016-03-25T07:04:25.750606+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T07:04:25.750713+00:00 app[web.1]: npm WARN deprecated   npm -g install npm@latest
+2016-03-25T07:04:25.750788+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T07:04:25.750879+00:00 app[web.1]: npm WARN deprecated (Depending on how Node.js was installed on your system, you
+2016-03-25T07:04:25.750979+00:00 app[web.1]: npm WARN deprecated may need to prefix the preceding commands with `sudo`, or if
+2016-03-25T07:04:25.751088+00:00 app[web.1]: npm WARN deprecated on Windows, run them from an Administrator prompt.)
+2016-03-25T07:04:25.751167+00:00 app[web.1]: npm WARN deprecated
+2016-03-25T07:04:25.751254+00:00 app[web.1]: npm WARN deprecated If you're running the version of npm bundled with
+2016-03-25T07:04:25.751357+00:00 app[web.1]: npm WARN deprecated Node.js 0.10 LTS, be aware that the next version of 0.10 LTS
+2016-03-25T07:04:25.751454+00:00 app[web.1]: npm WARN deprecated will be bundled with a version of npm@2, which has some small
+2016-03-25T07:04:25.751548+00:00 app[web.1]: npm WARN deprecated backwards-incompatible changes made to `npm run-script` and
+2016-03-25T07:04:25.751755+00:00 app[web.1]: npm WARN deprecated semver behavior.
+2016-03-25T07:04:25.801925+00:00 app[web.1]:
+2016-03-25T07:04:25.801949+00:00 app[web.1]: > webHA@0.0.1 start /app
+2016-03-25T07:04:25.801951+00:00 app[web.1]: > node index.js
+2016-03-25T07:04:25.801951+00:00 app[web.1]:
+2016-03-25T07:04:26.021417+00:00 app[web.1]: http server listening on 27813
+2016-03-25T07:04:26.023163+00:00 app[web.1]: websocket server created
+2016-03-25T07:04:26.455851+00:00 heroku[web.1]: State changed from starting to up
+2016-03-25T07:04:27.282261+00:00 app[web.1]: ws open 0
+2016-03-25T07:04:27.351300+00:00 app[web.1]: ws msg {"op":0}
+2016-03-25T07:04:27.423002+00:00 app[web.1]: ws msg {"op":2,"type":2,"id":0}
+2016-03-25T07:04:27.488581+00:00 app[web.1]: ws msg {"op":3,"dest":0,"type":2,"msg":"TEST01010203"}
+2016-03-25T07:05:22.465879+00:00 heroku[router]: at=error code=H15 desc="Idle connection" method=GET path="/" host=homea.herokuapp.com request_id=6706acca-6153-4a14-9220-5ca1aaed59ff fwd="93.114.164.1
+45" dyno=web.1 connect=0ms service=55212ms status=503 bytes=199
+2016-03-25T07:05:22.490533+00:00 app[web.1]: ws close 0

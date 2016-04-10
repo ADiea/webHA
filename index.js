@@ -81,13 +81,6 @@ wss.on("connection", function(ws)
   ws.on("message", function(msg) 
   {
     console.log("ws msg "+msg+"| sz="+msg.length);
-	var str="";
-	for(var i=0;i<msg.length;i++)
-	{
-		str += msg.charCodeAt(i) + " ";
-	}
-    
-	console.log("ws msg codes "+str);
 	
 	var m = {};
 	var reply = {};
@@ -159,12 +152,16 @@ wss.on("connection", function(ws)
 				{
 					if(gCon[i].type == destType && gCon[i].id == dest)
 					{
+						console.log("[D] proxy found dest:"+i);
 						var proxy={}
 						proxy.op = WsProtocol.wsOP_msgRelay;
 						proxy.msg = m.msg;
 						proxy.from = gCon[conIdx].id;
 						
 						gCon[i].ws.send(JSON.stringify(proxy), function() {  })
+						
+						console.log("[D] proxy msg:"+JSON.stringify(proxy));
+						
 						reply.op = WsProtocol.wsOP_positiveAck;
 						break;
 					}

@@ -80,8 +80,15 @@ wss.on("connection", function(ws)
    
   ws.on("message", function(msg) 
   {
-    console.log("ws msg "+msg)
+    console.log("ws msg "+msg+"| sz="+msg.length);
+	var str="";
+	for(var i=0;i<msg.length;i++)
+	{
+		str += msg.charCodeAt(i) + " ";
+	}
     
+	console.log("ws msg codes "+str);
+	
 	var m = {};
 	var reply = {};
 	

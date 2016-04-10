@@ -68,7 +68,7 @@ wss.on("connection", function(ws)
   var id = curID++;
   var conIdx = gCon.length;
   
-  gCon.push({ws:ws, id:-1, ws:ws, state:WsProtocol.wsState_new, type:WsProtocol.wsValue_unknown});
+  gCon.push({ws:ws, id:-1, state:WsProtocol.wsState_new, type:WsProtocol.wsValue_unknown});
   
   /*setInterval(function() {
     ws.send(JSON.stringify(new Date()), function() {  })
@@ -82,8 +82,19 @@ wss.on("connection", function(ws)
   {
     console.log("ws msg "+msg)
     
-	var m = JSON.parse(msg);
+	var m = {};
 	var reply = {};
+	
+	try{
+		m = JSON.parse(msg);
+	}
+	catch(e)
+	{
+		console.log("ws parse exc: "+e.message)
+		m = {op:-1};
+	}
+	
+	
 	
 	if(typeof m.op === 'undefined')
 	{

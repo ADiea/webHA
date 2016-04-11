@@ -150,6 +150,7 @@ wss.on("connection", function(ws)
 				
 				for(; i< conIdx+1;i++)
 				{
+					console.log("[D] proxy search for id " + dest +": id["+i + "]=" + gCon[i].id);
 					if(gCon[i].type == destType && gCon[i].id == dest)
 					{
 						console.log("[D] proxy found dest:"+i);

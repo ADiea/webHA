@@ -148,7 +148,7 @@ wss.on("connection", function(ws)
 				var i=0;
 				reply.op = WsProtocol.wsOP_negativeAck;
 				
-				for(; i< conIdx+1;i++)
+				for(; i< gCon.length;i++)
 				{
 					console.log("[D] proxy search for id " + dest +": id["+i + "]=" + gCon[i].id);
 					if(gCon[i].type == destType && gCon[i].id == dest)
